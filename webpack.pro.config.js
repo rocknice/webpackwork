@@ -8,7 +8,7 @@ module.exports = {
 	},
 	output: {
 		path: path.join(__dirname, "./build/webapp/"),
-		publicPath: "http://www.rocknice.cn",
+		publicPath: "http://111.230.129.19:3000",
 		filename: "scripts/[name]-[hash:5].bundle.js"
 	},
 	devServer: {
