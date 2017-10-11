@@ -48,7 +48,7 @@ module.exports = {
 			filename: 'layout.html',
 			template: './src/webapp/views/layout.html',
 			inject: true,
-			chunks: ['common']
+			excludeChunks: ['common','index']
 		}),
 		new webpack.optimize.CommonsChunkPlugin({ //提取公共代码
 			name: 'common', //公共文件名
