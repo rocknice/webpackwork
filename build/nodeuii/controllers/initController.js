@@ -15,6 +15,7 @@ var initController = {
 		app.use(router(function (_) {
 			_.get('/index/index', _indexController2.default.index());
 			_.get('/index/update', _indexController2.default.update());
+			_.get('/index/3Dbox', _indexController2.default.shopping());
 		}));
 	}
 };

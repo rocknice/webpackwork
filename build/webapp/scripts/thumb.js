@@ -4,7 +4,7 @@ var _index = require('./index.es');
 
 var _index2 = _interopRequireDefault(_index);
 
-require('./add.js');
+require('./add.es');
 
 require('../styles/index.css');
 
