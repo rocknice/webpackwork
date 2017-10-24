@@ -9,7 +9,7 @@ module.exports = {
 	},
 	output: {
 		path: path.join(__dirname, "./build/webapp/"),
-		publicPath: "http://111.230.129.19:3000",
+		publicPath: "http://111.230.129.19:3000/",                    
 		filename: "scripts/[name]-[hash:5].js"
 	},
 	devServer: {
@@ -47,6 +47,9 @@ module.exports = {
 		},{
 			test: /\.(woff|svg|eot|ttf)$/,
 			use: {loader: "url-loader?name=fonts/[name].[ext]"}
+		},{
+			test: /\.mp3$/,
+			use: {loader: "file-loader?name=audio/[name].[ext]"}
 		}]
 	},
 	plugins: [
