@@ -138,7 +138,7 @@ body{
 	background-image: url(http://localhost:3000/img/bg.jpg);
 }
 #box{
-	-webkit-perspective:25rem;
+	-webkit-perspective:30rem;
 	-webkit-perspective-origin: 50% 2%;
 }
 .container{
