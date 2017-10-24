@@ -44,28 +44,31 @@ module.exports = {
 		},{
 			test: /\.(png|jpg)$/,
 			use: {loader: "url-loader?limit=8192&name=img/[name].[ext]"}
+		},{
+			test: /\.(woff|svg|eot|ttf)$/,
+			use: {loader: "url-loader?name=fonts/[name].[ext]"}
 		}]
 	},
 	plugins: [
-	new ExtractTextPlugin("styles/[name]-[hash:5].css"),
-	new HtmlWebpackPlugin({
-		filename: 'index.html',
-		template: './src/webapp/views/index.html',
-		inject: true,
-		excludeChunks:['box']
-	}),
-	new HtmlWebpackPlugin({
-		filename: 'layout.html',
-		template: './src/webapp/views/layout.html',
-		inject: true,
-		excludeChunks: ['common','praise','box']
-	}),
-	new HtmlWebpackPlugin({
-		filename: '3dshopping.html',
-		template: './src/webapp/views/3dshopping.html',
-		inject: true,
-		excludeChunks: ['praise']
-	}),
+		new ExtractTextPlugin("styles/[name]-[hash:5].css"),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: './src/webapp/views/index.html',
+			inject: true,
+			excludeChunks:['box']
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'layout.html',
+			template: './src/webapp/views/layout.html',
+			inject: true,
+			excludeChunks: ['common','praise','box']
+		}),
+		new HtmlWebpackPlugin({
+			filename: '3dshopping.html',
+			template: './src/webapp/views/3dshopping.html',
+			inject: true,
+			excludeChunks: ['praise']
+		}),
 		new webpack.optimize.CommonsChunkPlugin({ //提取公共代码
 			name: 'common', //公共文件名
 			filename: 'scripts/[name]-[hash:5].js', // 地址

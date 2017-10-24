@@ -1,1 +1,129 @@
-webpackJsonp([0],[function(t,e,n){"use strict";var o=n(1),i=function(t){return t&&t.__esModule?t:{default:t}}(o);n(2),n(3),new i.default(0,$("#container")).clickAction()},function(t,e,n){"use strict";function o(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function i(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}function c(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}}(),u="",a=function t(e,n){c(this,t),this.count=e,this.element=n},s=function(t){function e(t,n){return c(this,e),o(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,t,n))}return i(e,t),r(e,[{key:"clickAction",value:function(){var t=this;this.element.click(function(){u&&clearTimeout(u),u=setTimeout(function(){if(t.count<10){t.element.css("-webkit-filter","grayscale(0)"),t.count=add(t.count);var e=t.count;t.element;$("#praise").css({opacity:"1",position:"relative",top:"10px"}).text("+"+e),setTimeout(function(){$("#praise").css({opacity:"0",position:"relative",top:"40px"})},700),axios.get("/index/update").then(function(t){}).catch(function(t){console.log(t)})}else t.element.css("-webkit-filter","grayscale(1)"),t.count=0;console.log(t.count)},500)})}}]),e}(a);e.default=s},function(t,e,n){"use strict";window.add=function(t){return t+1}},function(t,e){}],[0]);
+webpackJsonp([1],[
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _index = __webpack_require__(1);
+
+var _index2 = _interopRequireDefault(_index);
+
+__webpack_require__(2);
+
+__webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var d = new _index2.default(0, $('#container')); //这里给jquery写了一个插件
+d.clickAction();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var f = "";
+//编译前的es6源代码
+//父类PraiseButton
+
+var PraiseButton = function PraiseButton(count, element) {
+	_classCallCheck(this, PraiseButton);
+
+	//实例属性
+	this.count = count;
+	this.element = element;
+};
+//子类Thumb
+
+
+var Thumb = function (_PraiseButton) {
+	_inherits(Thumb, _PraiseButton);
+
+	function Thumb(count, element) {
+		_classCallCheck(this, Thumb);
+
+		return _possibleConstructorReturn(this, (Thumb.__proto__ || Object.getPrototypeOf(Thumb)).call(this, count, element));
+	}
+	//由于super指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过super调用的。
+	//ES6 规定，通过super调用父类的方法时，super会绑定子类的this。
+
+
+	_createClass(Thumb, [{
+		key: "clickAction",
+		value: function clickAction() {
+			var _this2 = this;
+
+			this.element.click(function () {
+				if (f) {
+					clearTimeout(f);
+				}
+				f = setTimeout(function () {
+					if (_this2.count < 10) {
+						_this2.element.css('-webkit-filter', 'grayscale(0)');
+						_this2.count = add(_this2.count);
+						var num = _this2.count;
+						var praise = _this2.element;
+						$("#praise").css({
+							"opacity": "1",
+							"position": "relative",
+							"top": "10px"
+						}).text("+" + num);
+						setTimeout(function () {
+							$("#praise").css({
+								"opacity": "0",
+								"position": "relative",
+								"top": "40px"
+							});
+						}, 700);
+						axios.get('/index/update').then(function (response) {}).catch(function (error) {
+							console.log(error);
+						});
+					} else {
+						_this2.element.css('-webkit-filter', 'grayscale(1)');
+						_this2.count = 0;
+					}
+					console.log(_this2.count);
+				}, 500);
+			});
+		}
+	}]);
+
+	return Thumb;
+}(PraiseButton);
+
+exports.default = Thumb;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+window.add = function (num) {
+	return num + 1;
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+],[0]);

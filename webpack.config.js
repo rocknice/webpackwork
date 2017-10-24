@@ -36,17 +36,17 @@ module.exports = {
 				fallback: "style-loader",
 				use: {
 					loader: 'css-loader',
-					options: {
-						minimize: true
-					}
 				}
 			})
 		},{
 			test: /\.(png|jpg)$/,
 			use: {loader: "url-loader?limit=8192&name=img/[name].[ext]"}
 		},{
-			test: /\.(mp3|ogg)$/,
-			use: {loader: "file-loader?&name=audio/[name].[ext]"}
+			test: /\.(woff|svg|eot|ttf)$/,
+			use: {loader: "url-loader?name=fonts/[name].[ext]"}
+		},{
+			test: /\.mp3$/,
+			use: {loader: "file-loader?name=audio/[name].[ext]"}
 		}]
 	},
 	plugins: [
@@ -73,16 +73,5 @@ module.exports = {
 		name: 'common', //公共文件名
 		filename: 'scripts/[name].js', // 地址
 		minChunks: 2 //被引用两次以上就生成
-	}),
-	new webpack.optimize.UglifyJsPlugin({ //压缩代码，同时可以做到将没有用到的代码删除。tree shaking
-		compress: {
-			warnings: true
-		},
-		output: {
-			comments: false
-		},
-		sourceMap: false
-	}),
-	new webpack.optimize.ModuleConcatenationPlugin()
-	]
+	}),]
 }
