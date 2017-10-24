@@ -30,7 +30,7 @@ window.addEventListener('deviceorientation', function (event) {
 	if (Math.abs(gamma) > 1) {
 		flag = false;
 		var box = document.getElementsByClassName("container");
-		box[0].style.transform = "rotateY(" + gamma * 3 + "deg)";
+		box[0].style.transform = "rotateY(" + gamma * 4 + "deg)";
 	} else {
 		flag = true;
 	}
@@ -57,10 +57,10 @@ var Rotate = function () {
 			elem.onmousedown = function (e) {
 				e.preventDefault();
 				ev = window.event || e;
-				down_x = ev.screenX - dist; //down_x表示初始点x坐标，减前一次的移动距离。
+				down_x = ev.screenX + dist; //down_x表示初始点x坐标，减前一次的移动距离。
 				elem.onmousemove = function (e) {
 					move_x = e.screenX;
-					dist = move_x - down_x; //move_x随着鼠标移动变化，down_x不变，偏移量dist始终等于新的偏移量加前一次的偏移量，前一次的偏移量dist也由鼠标松开的时候固定。
+					dist = down_x - move_x; //move_x随着鼠标移动变化，down_x不变，偏移量dist始终等于新的偏移量加前一次的偏移量，前一次的偏移量dist也由鼠标松开的时候固定。
 					box[0].style.transform = "rotateY(" + dist / 2 + "deg)";
 				};
 				elem.onmouseleave = function (e) {
@@ -88,13 +88,13 @@ var Rotate = function () {
 			elem.addEventListener("touchstart", function (e) {
 				e.preventDefault();
 				ev = window.event || e;
-				touch_x = ev.touches[0].screenX - dist; //down_x表示初始点x坐标，减前一次的移动距离。
+				touch_x = ev.touches[0].screenX + dist; //down_x表示初始点x坐标，减前一次的移动距离。
 			}, false);
 			elem.addEventListener("touchmove", function (e) {
 				if (flag) {
 					e.preventDefault();
 					move_x = e.touches[0].screenX;
-					dist = move_x - touch_x;
+					dist = touch_x - move_x;
 					box[0].style.transform = "rotateY(" + dist + "deg)";
 				} else {
 					return false;
