@@ -130,7 +130,7 @@ var Rotate = function () {
 		value: function browserUA() {
 			var elem = this.elem;
 			var ua = window.navigator.userAgent;
-			var isSafari = ua.indexOf("Safari") != -1 && ua.indexOf("Version") != -1;
+			var isSafari = ua.indexOf("Safari") != -1 && ua.indexOf("Version") != -1 && ua.indexOf("Mobile") == -1;
 			if (isSafari === true) {
 				elem.style.perspective = "40rem";
 				elem.style.perspectiveOrigin = "100% 2%";
