@@ -29,11 +29,12 @@ window.addEventListener('deviceorientation', function (event) {
 	var gamma = event.gamma;
 	if (Math.abs(gamma) > 1) {
 		flag = false;
+		var box = document.getElementsByClassName("container");
 		box[0].style.transform = "rotateY(" + gamma * 3 + "deg)";
 	} else {
 		flag = true;
 	}
-});
+}, false);
 
 var Rotate = function () {
 	function Rotate(id) {

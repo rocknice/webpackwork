@@ -147,7 +147,6 @@ body{
 	position: relative;
 	margin: 0 auto;
 	-webkit-transform-style: preserve-3d;
-	transform: rotateY(0deg);
 	transition: transform 1s ease;
 }
 .common{
