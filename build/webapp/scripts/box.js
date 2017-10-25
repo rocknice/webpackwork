@@ -25,16 +25,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var flag = true;
 //flag叫标志量，用来作为控制一段语句是否运行的标志。这段语句里，当flag为true时，可以执行自动旋转，且设置flag为false，所以不能执行触摸动作，当gamma角度小于1时，flag为true，可以执行触摸动作。
 //陀螺仪：
-window.addEventListener('deviceorientation', function (event) {
-	var gamma = event.gamma;
-	if (Math.abs(gamma) > 1) {
-		flag = false;
-		var box = document.getElementsByClassName("container");
-		box[0].style.transform = "rotateY(" + gamma * 4 + "deg)";
-	} else {
-		flag = true;
-	}
-}, false);
+(function () {
+	var box = document.getElementsByClassName("container");
+	box[0].addEventListener("transitionend", function (e) {
+		console.log('css3运动结束！');
+	}, false);
+	window.addEventListener('deviceorientation', function (event) {
+		var gamma = event.gamma;
+		if (Math.abs(gamma) > 1) {
+			flag = false;
+			box[0].style.transform = "rotateY(" + gamma + "deg)";
+		} else {
+			flag = true;
+		}
+	}, false);
+})();
 
 var Rotate = function () {
 	function Rotate(id) {
@@ -96,8 +101,6 @@ var Rotate = function () {
 					move_x = e.touches[0].screenX;
 					dist = touch_x - move_x;
 					box[0].style.transform = "rotateY(" + dist + "deg)";
-				} else {
-					return false;
 				}
 			});
 		}
