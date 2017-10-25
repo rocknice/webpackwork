@@ -27,14 +27,16 @@ var flag = true;
 //陀螺仪：
 (function () {
 	var box = document.getElementsByClassName("container");
-	box[0].addEventListener("transitionend", function (e) {
-		console.log('css3运动结束！');
-	}, false);
+	// box[0].addEventListener("transitionend", function(e) {  
+	// 	console.log('css3运动结束！');  
+	// },false);
 	window.addEventListener('deviceorientation', function (event) {
 		var gamma = event.gamma;
 		if (Math.abs(gamma) > 1) {
 			flag = false;
-			box[0].style.transform = "rotateY(" + gamma + "deg)";
+			var angle = document.getElementById("angle");
+			angle.innerHTML = "Gama角角度为" + gamma + "度";
+			box[0].style.transform = "rotateY(" + gamma * 3 + "deg)";
 		} else {
 			flag = true;
 		}
@@ -64,9 +66,11 @@ var Rotate = function () {
 				ev = window.event || e;
 				down_x = ev.screenX + dist; //down_x表示初始点x坐标，减前一次的移动距离。
 				elem.onmousemove = function (e) {
-					move_x = e.screenX;
-					dist = down_x - move_x; //move_x随着鼠标移动变化，down_x不变，偏移量dist始终等于新的偏移量加前一次的偏移量，前一次的偏移量dist也由鼠标松开的时候固定。
-					box[0].style.transform = "rotateY(" + dist / 2 + "deg)";
+					if (flag) {
+						move_x = e.screenX;
+						dist = down_x - move_x; //move_x随着鼠标移动变化，down_x不变，偏移量dist始终等于新的偏移量加前一次的偏移量，前一次的偏移量dist也由鼠标松开的时候固定。
+						box[0].style.transform = "rotateY(" + dist / 2 + "deg)";
+					}
 				};
 				elem.onmouseleave = function (e) {
 					elem.onmousemove = null;

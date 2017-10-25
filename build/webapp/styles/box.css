@@ -135,7 +135,14 @@ html{
 .icon-bofang1:before { content: "\E638"; }
 
 body{
+	overflow: hidden;
 	background-image: url(http://localhost:3000/img/bg.jpg);
+}
+#angle{
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+	z-index: 999;
 }
 #box{
 	-webkit-perspective:30rem;
