@@ -12,8 +12,10 @@ node作为服务端，使用了koa框架，webpack分别打包压缩这两个页
 
 1、克隆代码
 
-2、npm install
+2、命令行输入npm install
 
-3、node app.js
+3、进入build/nodeuii
+
+4、命令行输入node app.js
 
 
